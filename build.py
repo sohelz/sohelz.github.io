@@ -188,6 +188,51 @@ def build_pages(site_config, base_template, page_template):
         print(f"  Built page: pages/{slug}.html")
 
 
+def build_tag_pages(site_config, base_template, posts):
+    """Build index pages for each tag."""
+    tags = {}
+    for post in posts:
+        for tag in post.get("tags", []):
+            tags.setdefault(tag, []).append(post)
+
+    tags_dir = os.path.join(POSTS_OUTPUT, "tags")
+    os.makedirs(tags_dir, exist_ok=True)
+
+    for tag, tag_posts in tags.items():
+        slug = tag.lower().replace(" ", "-")
+        if not tag_posts:
+            list_html = "<p>No posts yet.</p>"
+        else:
+            items = []
+            for post in tag_posts:
+                post_slug = post.get("slug", "untitled")
+                items.append(
+                    f'<article class="post-summary">\n'
+                    f'  <time datetime="{post["date"]}">{post["date"]}</time>\n'
+                    f'  <h2><a href="/posts/{post_slug}.html">{post["title"]}</a></h2>\n'
+                    f'</article>'
+                )
+            list_html = "\n".join(items)
+
+        content = f'<h1>{tag}</h1>\n<div class="post-list">\n{list_html}\n</div>'
+
+        nav_html = render_navigation(site_config["navigation"], f"posts/tags/{slug}.html")
+        page_html = render_template(base_template, {
+            "site_title": site_config["title"],
+            "page_title": tag + " — " + site_config["title"],
+            "description": f"Posts tagged {tag}",
+            "navigation": nav_html,
+            "content": content,
+            "year": str(datetime.now().year),
+            "author": site_config["author"],
+        })
+
+        output_path = os.path.join(tags_dir, f"{slug}.html")
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(page_html)
+        print(f"  Built tag page: posts/tags/{slug}.html")
+
+
 def build_home(site_config, base_template, posts):
     """Build the home page."""
     index_template = load_template("index.html")
@@ -240,6 +285,7 @@ def main():
 
     posts = build_posts(site_config, base_template, post_template)
     build_post_index(site_config, base_template, posts)
+    build_tag_pages(site_config, base_template, posts)
     build_pages(site_config, base_template, page_template)
     build_home(site_config, base_template, posts)
 
