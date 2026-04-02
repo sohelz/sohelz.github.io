@@ -252,11 +252,23 @@ def build_home(site_config, base_template, posts):
     else:
         recent_html = "<p>No posts yet.</p>"
 
+    categories = site_config.get("categories", [])
+    if categories:
+        cat_items = []
+        for cat in categories:
+            cat_items.append(
+                f'<li><a href="/posts/tags/{cat["slug"]}.html">{cat["label"]}</a></li>'
+            )
+        categories_html = "\n      ".join(cat_items)
+    else:
+        categories_html = ""
+
     content = render_template(index_template, {
         "site_title": site_config["title"],
         "subtitle": site_config.get("subtitle", ""),
         "description": site_config["description"],
         "recent_posts": recent_html,
+        "categories": categories_html,
     })
 
     nav_html = render_navigation(site_config["navigation"], "index.html")

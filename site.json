@@ -10,8 +10,10 @@
     {"label": "Music", "href": "pages/music.html"},
     {"label": "Research", "href": "pages/research.html"},
     {"label": "Blog", "href": "posts/index.html"},
-    {"label": "Synth Journal", "href": "posts/tags/synth-journal.html"},
     {"label": "Contact", "href": "pages/contact.html"}
+  ],
+  "categories": [
+    {"label": "Synth Journal", "slug": "synth-journal"}
   ],
   "social": {
     "github": "https://github.com/sohelz",
