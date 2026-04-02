@@ -1,0 +1,21 @@
+{
+  "title": "Soheil Zarrinpour",
+  "subtitle": "Composer | Researcher | Developer",
+  "url": "https://soheilzarrinpour.com",
+  "author": "Soheil Zarrinpour",
+  "description": "Personal website of Soheil Zarrinpour — composer, researcher, and developer specializing in electroacoustic music, accessibility in music technology, and Persian musical traditions.",
+  "navigation": [
+    {"label": "Home", "href": "index.html"},
+    {"label": "About", "href": "pages/about.html"},
+    {"label": "Music", "href": "pages/music.html"},
+    {"label": "Research", "href": "pages/research.html"},
+    {"label": "Blog", "href": "posts/index.html"},
+    {"label": "Contact", "href": "pages/contact.html"}
+  ],
+  "social": {
+    "github": "https://github.com/sohelz",
+    "soundcloud": "",
+    "youtube": "",
+    "email": "your-email@example.com"
+  }
+}
