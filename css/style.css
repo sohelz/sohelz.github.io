@@ -172,6 +172,22 @@ p code {
   border-radius: 3px;
 }
 
+/* === Banner (Home Page) === */
+.banner {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 400px;
+}
+
 /* === Hero (Home Page) === */
 .hero {
   text-align: center;
