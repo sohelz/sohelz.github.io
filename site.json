@@ -13,7 +13,9 @@
     {"label": "Contact", "href": "pages/contact.html"}
   ],
   "categories": [
-    {"label": "Synth Journal", "slug": "synth-journal"}
+    {"label": "Synth Journal", "slug": "synth-journal"},
+    {"label": "Code Lab", "slug": "code-lab"},
+    {"label": "Braille & Screen Reader Access Tools", "slug": "braille-screen-reader-access-tools"}
   ],
   "social": {
     "github": "https://github.com/sohelz",
