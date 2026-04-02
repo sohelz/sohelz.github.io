@@ -104,6 +104,10 @@ When the user says any of the following, do exactly what is described:
 2. List all pages.
 3. Report the last git commit date and message.
 
+## Consultation Syntax
+
+When the user writes text wrapped in `#` characters (e.g., `#this is a note to Claude#`), that text is a private instruction or consultation with Claude. It should NOT appear in any published content, page, or post. Strip it out and use it only as guidance for completing the task.
+
 ## Content Formatting
 
 In the body field of content JSON files, use these conventions:
