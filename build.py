@@ -68,6 +68,27 @@ def render_template(template_str, variables):
     return result
 
 
+SOCIAL_LABELS = {
+    "github": "GitHub",
+    "soundcloud": "SoundCloud",
+    "youtube": "YouTube",
+    "email": None,
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+}
+
+
+def render_footer_social(social_config):
+    """Build HTML list items for non-empty social links."""
+    items = []
+    for key, url in social_config.items():
+        if not url or key == "email":
+            continue
+        label = SOCIAL_LABELS.get(key, key.capitalize())
+        items.append(f'<li><a href="{url}" aria-label="{label}">{label}</a></li>')
+    return "\n          ".join(items)
+
+
 def build_posts(site_config, base_template, post_template):
     """Build all blog post pages and return post metadata list."""
     os.makedirs(POSTS_OUTPUT, exist_ok=True)
@@ -97,13 +118,11 @@ def build_posts(site_config, base_template, post_template):
 
         nav_html = render_navigation(site_config["navigation"], "posts/index.html")
         page_html = render_template(base_template, {
-            "site_title": site_config["title"],
+            **base_vars(site_config),
             "page_title": post_data["title"] + " — " + site_config["title"],
             "description": post_data.get("description", site_config["description"]),
             "navigation": nav_html,
             "content": post_html,
-            "year": str(datetime.now().year),
-            "author": site_config["author"],
         })
 
         slug = post_data.get("slug", filename.replace(".json", ""))
@@ -137,13 +156,11 @@ def build_post_index(site_config, base_template, posts):
 
     nav_html = render_navigation(site_config["navigation"], "posts/index.html")
     page_html = render_template(base_template, {
-        "site_title": site_config["title"],
+        **base_vars(site_config),
         "page_title": "Blog — " + site_config["title"],
         "description": "Blog posts by " + site_config["author"],
         "navigation": nav_html,
         "content": content,
-        "year": str(datetime.now().year),
-        "author": site_config["author"],
     })
 
     output_path = os.path.join(POSTS_OUTPUT, "index.html")
@@ -173,13 +190,11 @@ def build_pages(site_config, base_template, page_template):
         slug = page_data.get("slug", filename.replace(".json", ""))
         nav_html = render_navigation(site_config["navigation"], f"pages/{slug}.html")
         page_html = render_template(base_template, {
-            "site_title": site_config["title"],
+            **base_vars(site_config),
             "page_title": page_data["title"] + " — " + site_config["title"],
             "description": page_data.get("description", site_config["description"]),
             "navigation": nav_html,
             "content": page_content,
-            "year": str(datetime.now().year),
-            "author": site_config["author"],
         })
 
         output_path = os.path.join(PAGES_OUTPUT, f"{slug}.html")
@@ -218,13 +233,11 @@ def build_tag_pages(site_config, base_template, posts):
 
         nav_html = render_navigation(site_config["navigation"], f"posts/tags/{slug}.html")
         page_html = render_template(base_template, {
-            "site_title": site_config["title"],
+            **base_vars(site_config),
             "page_title": tag + " — " + site_config["title"],
             "description": f"Posts tagged {tag}",
             "navigation": nav_html,
             "content": content,
-            "year": str(datetime.now().year),
-            "author": site_config["author"],
         })
 
         output_path = os.path.join(tags_dir, f"{slug}.html")
@@ -273,19 +286,27 @@ def build_home(site_config, base_template, posts):
 
     nav_html = render_navigation(site_config["navigation"], "index.html")
     page_html = render_template(base_template, {
-        "site_title": site_config["title"],
+        **base_vars(site_config),
         "page_title": site_config["title"],
         "description": site_config["description"],
         "navigation": nav_html,
         "content": content,
-        "year": str(datetime.now().year),
-        "author": site_config["author"],
     })
 
     output_path = os.path.join(SITE_DIR, "index.html")
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(page_html)
     print("  Built index.html")
+
+
+def base_vars(site_config):
+    """Return common variables for the base template."""
+    return {
+        "site_title": site_config["title"],
+        "year": str(datetime.now().year),
+        "author": site_config["author"],
+        "footer_social": render_footer_social(site_config.get("social", {})),
+    }
 
 
 def main():

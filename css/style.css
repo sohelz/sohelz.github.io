@@ -350,6 +350,27 @@ footer {
   opacity: 0.8;
 }
 
+.footer-social ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.footer-social a {
+  color: var(--color-header-text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.footer-social a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 /* === Contact Form === */
 .contact-form {
   margin-top: 1.5rem;
