@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal website of Soheil Zarrinpour — composer, researcher, and developer specializing in electroacoustic music, accessibility in music technology, and Persian musical traditions.">
+  <meta name="author" content="Soheil Zarrinpour">
+  <title>AI MLX — Local AI Code Translator for SuperCollider — Soheil Zarrinpour</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header role="banner">
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Soheil Zarrinpour</a>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/music.html">Music</a></li>
+        <li><a href="/pages/research.html">Research</a></li>
+        <li><a href="/posts/index.html" class="active">Blog</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content" role="main">
+    <div class="container">
+      <article class="post">
+  <header class="post-header">
+    <h1>AI MLX — Local AI Code Translator for SuperCollider</h1>
+    <time datetime="2026-04-16">2026-04-16</time>
+    <div class="tags"><span class="tag">code-lab</span></div>
+  </header>
+  <div class="post-body">
+    <p><a href="https://github.com/sohelz/ai-mlx-supercollider">AI MLX</a> is a SuperCollider tool that translates natural language shorthand into SuperCollider code using a local LLM running on Apple Silicon via MLX. No cloud API, no internet — everything runs on your machine. Designed and built by Soheil Zarrinpour with the assistance of AI.</p>
+
+<h2>What It Does</h2>
+
+<p>Instead of typing full SuperCollider syntax, you write shorthand like <code>sin440 0.1</code> or <code>lpf white 440</code>, and the tool returns clean SuperCollider code: <code>SinOsc.ar(440, 0, 0.1)</code> or <code>LPF.ar(WhiteNoise.ar(1), 440)</code>. It understands oscillators, noise generators, filters, envelopes, arrays, patterns, reverbs, delays, math operations, and more — a full dictionary of SuperCollider vocabulary.</p>
+
+<p>You can also use <code>~sc.("sin440 0.1")</code> to translate and immediately play the result in one step.</p>
+
+<h2>How It Works</h2>
+
+<p>The tool uses three components working together:</p>
+
+<p><strong>MLX</strong> — Apple's machine learning framework optimized for Apple Silicon (M1/M2/M3/M4). It runs large language models locally using the GPU, with no cloud dependency.<br>
+<strong>mlx-lm</strong> — A Python command-line tool for generating text with MLX models. Install it with <code>pip3 install mlx-lm</code>.<br>
+<strong>Llama 3.1 8B (4-bit)</strong> — Meta's open language model, quantized to 4-bit for efficient local execution (~4 GB download on first use).</p>
+
+<p>From within SuperCollider, the script calls <code>mlx_lm.generate</code> as a shell process using SuperCollider's <code>Pipe</code> class. It sends a structured prompt containing a comprehensive dictionary of SuperCollider syntax, along with your shorthand input. The model returns the corresponding SuperCollider expression, which you can evaluate directly.</p>
+
+<h2>How to Use It</h2>
+
+<p>1. Install <code>mlx-lm</code>: <code>pip3 install mlx-lm</code><br>
+2. Open <code>AI MLX.scd</code> in SuperCollider and evaluate the function blocks.<br>
+3. If your Python path differs, update the path in the <code>Pipe.new(...)</code> call. Find yours with <code>which mlx_lm.generate</code> in the terminal.<br>
+4. Type shorthand and get code:</p>
+
+<pre><code>~ai.("sin440 0.1")           // → SinOsc.ar(440, 0, 0.1)
+~ai.("lpf white 440")        // → LPF.ar(WhiteNoise.ar(1), 440)
+~ai.("reverb saw 220 0.2")   // → FreeVerb.ar(Saw.ar(220, 0.2))
+~ai.("close to 2 5 10 15 22") // → Array.geom(5, 2, 2)
+~ai.("pbind sin rand freq 200 800 dur 0.25")
+~sc.("sin440 0.1")           // translates AND plays
+</code></pre>
+
+<h2>Requirements</h2>
+
+<p>macOS with Apple Silicon (M1 or later), Python 3, SuperCollider, and <code>mlx-lm</code>. The model downloads automatically on first run.</p>
+  </div>
+</article>
+
+    </div>
+  </main>
+  <footer role="contentinfo">
+    <div class="container">
+      <nav class="footer-social" aria-label="Social media links">
+        <ul>
+          <li><a href="https://github.com/sohelz" aria-label="GitHub">GitHub</a></li>
+          <li><a href="https://soundcloud.com/sohelz" aria-label="SoundCloud">SoundCloud</a></li>
+          <li><a href="https://www.instagram.com/soheil.zarrinpour" aria-label="Instagram">Instagram</a></li>
+        </ul>
+      </nav>
+      <p>&copy; 2026 Soheil Zarrinpour. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
