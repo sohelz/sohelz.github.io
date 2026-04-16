@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal website of Soheil Zarrinpour — composer, researcher, and developer specializing in electroacoustic music, accessibility in music technology, and Persian musical traditions.">
+  <meta name="author" content="Soheil Zarrinpour">
+  <title>RSP — Read SuperCollider Post Window — Soheil Zarrinpour</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header role="banner">
+    <div class="header-inner">
+      <a href="/index.html" class="site-title">Soheil Zarrinpour</a>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/music.html">Music</a></li>
+        <li><a href="/pages/research.html">Research</a></li>
+        <li><a href="/posts/index.html" class="active">Blog</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content" role="main">
+    <div class="container">
+      <article class="post">
+  <header class="post-header">
+    <h1>RSP — Read SuperCollider Post Window</h1>
+    <time datetime="2026-04-16">2026-04-16</time>
+    <div class="tags"><span class="tag">braille-screen-reader-access-tools</span></div>
+  </header>
+  <div class="post-body">
+    <p><a href="https://github.com/sohelz/rsp">RSP (Read SuperCollider Post Window)</a> is a macOS accessibility tool that reads the SuperCollider Post Window aloud via VoiceOver with a single hotkey. Designed and built by Soheil Zarrinpour with the assistance of AI.</p>
+
+<h2>The Problem</h2>
+
+<p>When live-coding in SuperCollider, the Post Window constantly prints evaluation results, server messages, and debug output. For a blind or visually impaired user relying on VoiceOver, switching focus to the Post Window to read its content breaks the workflow and wastes valuable time — especially during a performance or a fast coding session.</p>
+
+<h2>How RSP Works</h2>
+
+<p>RSP is a macOS Automator application wrapping an AppleScript. When triggered by a hotkey, it does the following:</p>
+
+<p>1. Uses <strong>System Events</strong> to access the SuperCollider process and read the text content of the Post Window.<br>
+2. Parses the text into lines and finds the last non-empty line — the most recent output.<br>
+3. Sends that line to <strong>VoiceOver</strong>, which speaks it aloud immediately.</p>
+
+<p>The entire cycle happens in an instant. There is no window switching, no mouse interaction, and no disruption to the coding flow.</p>
+
+<h2>Tools Used</h2>
+
+<p><strong>macOS Automator</strong> — packages the script as a standalone <code>.app</code> that can be assigned a system-wide keyboard shortcut.<br>
+<strong>AppleScript</strong> — interfaces with SuperCollider's UI through the macOS accessibility API (System Events).<br>
+<strong>VoiceOver</strong> — Apple's built-in screen reader, used here to speak the extracted Post Window text.</p>
+
+<h2>Setup</h2>
+
+<p>Download or build <code>rsp.app</code> from the <a href="https://github.com/sohelz/rsp">RSP GitHub page</a>, then assign it a hotkey through System Settings or a tool like Hammerspoon. Make sure VoiceOver is enabled and that both SuperCollider and the Automator app have Accessibility permissions in System Settings.</p>
+
+<p>With one keypress, you hear the latest Post Window output — no context switch, no wasted time.</p>
+  </div>
+</article>
+
+    </div>
+  </main>
+  <footer role="contentinfo">
+    <div class="container">
+      <nav class="footer-social" aria-label="Social media links">
+        <ul>
+          <li><a href="https://github.com/sohelz" aria-label="GitHub">GitHub</a></li>
+          <li><a href="https://soundcloud.com/sohelz" aria-label="SoundCloud">SoundCloud</a></li>
+          <li><a href="https://www.instagram.com/soheil.zarrinpour" aria-label="Instagram">Instagram</a></li>
+        </ul>
+      </nav>
+      <p>&copy; 2026 Soheil Zarrinpour. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
