@@ -75,6 +75,7 @@ SOCIAL_LABELS = {
     "email": None,
     "facebook": "Facebook",
     "instagram": "Instagram",
+    "mastodon": "Mastodon",
 }
 
 
