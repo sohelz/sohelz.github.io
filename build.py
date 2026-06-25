@@ -189,7 +189,16 @@ def build_pages(site_config, base_template, page_template):
         })
 
         slug = page_data.get("slug", filename.replace(".json", ""))
-        nav_html = render_navigation(site_config["navigation"], f"pages/{slug}.html")
+        custom_path = page_data.get("path")
+        if custom_path:
+            output_path = os.path.join(SITE_DIR, custom_path)
+            nav_href = custom_path
+        else:
+            output_path = os.path.join(PAGES_OUTPUT, f"{slug}.html")
+            nav_href = f"pages/{slug}.html"
+
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        nav_html = render_navigation(site_config["navigation"], nav_href)
         page_html = render_template(base_template, {
             **base_vars(site_config),
             "page_title": page_data["title"] + " — " + site_config["title"],
@@ -198,10 +207,10 @@ def build_pages(site_config, base_template, page_template):
             "content": page_content,
         })
 
-        output_path = os.path.join(PAGES_OUTPUT, f"{slug}.html")
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(page_html)
-        print(f"  Built page: pages/{slug}.html")
+        display = custom_path if custom_path else f"pages/{slug}.html"
+        print(f"  Built page: {display}")
 
 
 def build_tag_pages(site_config, base_template, posts):
