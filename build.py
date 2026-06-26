@@ -183,9 +183,15 @@ def build_pages(site_config, base_template, page_template):
         page_data = load_json(os.path.join(PAGES_CONTENT, filename))
 
         body_html = body_to_html(page_data.get("body", ""))
+        parent = page_data.get("parent")
+        if parent:
+            back_html = f'<nav class="back-link"><a href="{parent["href"]}">← {parent["title"]}</a></nav>'
+        else:
+            back_html = ""
         page_content = render_template(page_template, {
             "title": page_data["title"],
             "body": body_html,
+            "back_link": back_html,
         })
 
         slug = page_data.get("slug", filename.replace(".json", ""))

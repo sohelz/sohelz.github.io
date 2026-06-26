@@ -214,6 +214,23 @@ p code {
   color: var(--color-text-light);
 }
 
+/* === Back Link === */
+.back-link {
+  margin-bottom: 1.5rem;
+}
+
+.back-link a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.back-link a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 /* === Posts === */
 .post-header {
   margin-bottom: 2rem;

@@ -3,5 +3,5 @@
   "slug": "listen",
   "path": "listen/index.html",
   "description": "Music by Soheil Zarrinpour.",
-  "body": "<h2><a href=\"/listen/acoustic/\">Acoustic</a></h2>\n\n<h2><a href=\"/listen/electronic/\">Electronic</a></h2>"
+  "body": "<h2><a href=\"/listen/acoustic/\">Acoustic</a></h2>\n\n<h2><a href=\"/listen/electroacoustic/\">Electroacoustic</a></h2>"
 }

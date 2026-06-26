@@ -3,5 +3,6 @@
   "slug": "listen-acoustic",
   "path": "listen/acoustic/index.html",
   "description": "Acoustic compositions by Soheil Zarrinpour.",
-  "body": "<ul>\n<li><a href=\"/pages/three-miniatures-for-wind-quintet.html\">Three Miniatures for Wind Quintet</a></li>\n<li><a href=\"/pages/piano-and-live-electronic.html\">Piano and Live Electronic — An Improvisation on Chahargah</a></li>\n</ul>"
+  "parent": {"title": "Listen", "href": "/listen/"},
+  "body": "<h2><a href=\"/pages/three-miniatures-for-wind-quintet.html\">Three Miniatures for Wind Quintet</a></h2>"
 }

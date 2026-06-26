@@ -1,9 +1,9 @@
 {
   "title": "Soheil Zarrinpour",
-  "subtitle": "Composer | Developer",
+  "subtitle": "Composer | Audio Programmer",
   "url": "https://soheilzarrinpour.com",
   "author": "Soheil Zarrinpour",
-  "description": "Personal website of Soheil Zarrinpour — composer and developer specializing in electroacoustic music, accessibility in music technology, and Persian musical traditions.",
+  "description": "Personal website of Soheil Zarrinpour — composer and audio programmer specializing in electroacoustic music, accessibility in music technology, and Persian musical traditions.",
   "navigation": [
     {"label": "Home", "href": "index.html"},
     {"label": "About", "href": "pages/about.html"},

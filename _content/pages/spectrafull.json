@@ -2,5 +2,9 @@
   "title": "Spectrafull",
   "slug": "spectrafull",
   "description": "Spectrafull — an electronic music composition by Soheil Zarrinpour.",
-  "body": "<p>Spectrafull is an electronic music composition by Soheil Zarrinpour.</p>\n\n<p><a href=\"https://drive.google.com/file/d/1xmFcKEI_Yc5BK6EInmJZ9oBQq_EUZ2Wn/view?usp=sharing\">Listen to Spectrafull on Google Drive</a></p>\n\n<p><a href=\"https://github.com/sohelz/Spectrafull\">Spectrafull SuperCollider source on GitHub</a></p>"
+  "body": "<p>Spectrafull is an electronic music composition by Soheil Zarrinpour.</p>\n\n<p><a href=\"https://drive.google.com/file/d/1xmFcKEI_Yc5BK6EInmJZ9oBQq_EUZ2Wn/view?usp=sharing\">Listen to Spectrafull on Google Drive</a></p>\n\n<p><a href=\"https://github.com/sohelz/Spectrafull\">Spectrafull SuperCollider source on GitHub</a></p>",
+  "parent": {
+    "title": "Electroacoustic",
+    "href": "/listen/electroacoustic/"
+  }
 }
