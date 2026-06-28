@@ -146,7 +146,7 @@ Listen structure:
                                   Piano and Live Electronic
 
 Blog categories: Daily Synth Experience | Braille & Screen Reader Access Tools
-Posts: ai-mlx-supercollider, rsp-read-supercollider-post-window
+Posts: ai-mlx-supercollider, reading-post-window-supercollider-voiceover
 
 ================================================================================
 COMMANDS
