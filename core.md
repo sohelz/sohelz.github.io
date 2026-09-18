@@ -135,15 +135,18 @@ SITE.JSON SCHEMA
 ================================================================================
 CURRENT SITE STATE
 ================================================================================
-Navigation:  Home | About | Listen | Blog | Contact
+Navigation:  Home | About | Listen | Concerts and Performances | Blog | Contact
 Subtitle:    Composer | Audio Programmer
 
 Listen structure:
   /listen/                     — Acoustic + Electroacoustic headings
   /listen/acoustic/            — Three Miniatures for Wind Quintet
-  /listen/electroacoustic/     — Industrial Fantasia, Trapped Wind, Resurrection,
-                                  Lapis Bubbles, Submarine, Spectrafull,
-                                  Piano and Live Electronic
+  /listen/electroacoustic/     — Industrial Fantasia, Lapis Bubbles, Submarine,
+                                  Spectrafull, Piano and Live Electronic,
+                                  Lonely Perseverance on Mars
+
+Concerts and Performances structure:
+  /concerts/                   — Do Not Let Me Know (YouTube embed)
 
 Blog categories: Daily Synth Experience | Braille & Screen Reader Access Tools
 Posts: reading-post-window-supercollider-voiceover

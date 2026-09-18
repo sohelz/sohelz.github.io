@@ -8,6 +8,7 @@
     {"label": "Home", "href": "index.html"},
     {"label": "About", "href": "pages/about.html"},
     {"label": "Listen", "href": "listen/index.html"},
+    {"label": "Concerts and Performances", "href": "concerts/index.html"},
     {"label": "Blog", "href": "posts/index.html"},
     {"label": "Contact", "href": "pages/contact.html"}
   ],
